@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+.fixed-bg {
+    background-image: url("wallpaper.jpg");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div.transbox {
+    margin: 30px;
+    background-color: #ffffff;
+    min-height: 800px;
+    border: 1px solid black;
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.transbox p {
+    margin: 5%;
+    font-weight: bold;
+    color: #000000;
+}
+
+</style>
+</head>
+<body>
+
+<p>In this example, we have created a fixed background image that will disappear slowly on scroll. Scroll the page to see the effect. <strong>Note:</strong> Try to remove the background-attachment property to really understand this example.</p>
+ 
+<div class="fixed-bg">
+<div class="transbox">
+    <p>This is some text that is placed in the transparent box.</p>
+  </div>
+</div>
+
+
+</body>
+</html>
