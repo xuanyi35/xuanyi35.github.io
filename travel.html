@@ -11,7 +11,7 @@
         
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav();">&times;</a>
-            <a href="#">About</a>
+            <a href="travel.html">Travel</a>
             <a href="#">Services</a>
             <a href="#">Clients</a>
             <a href="#">Contact</a>
@@ -31,7 +31,7 @@
                                                                                    
                    var img = this.files[0];
                    // Image is accessible using JavaScript
-                   uploadImage(img, '/image/upload', function(response) {
+                   uploadImage(img, '/img/upload', function(response) {
                                // Image upload to server response
                                // Show the image using setImageUrl(URL)
                                })
@@ -41,6 +41,7 @@
                    }, false);
                    
                    function setImageUrl(url) {
+                       console.log('url: ', url);
                        document.getElementById('preview').setAttribute('src', url);
                    };
                     
