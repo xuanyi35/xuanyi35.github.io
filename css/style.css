@@ -45,7 +45,7 @@ body{
 
 /* fixed bg */
 .fixed-bg {
-    background-image: url("wallpaper.jpg");
+    background-image: url("../img/wallpaper.jpg");
     height: 91vh;
     background-attachment: fixed;
     background-position: center;
