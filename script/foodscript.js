@@ -10,9 +10,6 @@ function loadMain() {
     checkURLpage();
 
     api = getApi();
-	//console.log(api);
-    // api = apiurl;
-	
     var page = getPage();
     document.getElementById('page').innerHTML = page;
   
@@ -24,7 +21,7 @@ var request = new XMLHttpRequest()
         // Begin accessing JSON data here
         var data = JSON.parse(this.response);
         var foodlist = data.restaurants;
- 	// Log each movie's title & picture
+        console.log(foodlist);
         foodlist.forEach(restaurant => {
             const card = document.createElement('div');
             card.setAttribute('class', 'card');
@@ -32,12 +29,22 @@ var request = new XMLHttpRequest()
             const name = document.createElement('h4');
             name.textContent = restaurant.restaurant.name;
             const img = document.createElement("img");
-            img.src = restaurant.restaurant.photos[1].photo.url;
+            img.src = restaurant.restaurant.photos[0].photo.url;
+            const info = document.createElement('p');
+            info.innerHTML = "cuisines: " + restaurant.restaurant.cuisines + '<br />'
+                         +"@" +restaurant.restaurant.location.locality;
+                         
             container.appendChild(card);
             card.appendChild(name);
             card.appendChild(img);
+            card.appendChild(info);
 
-  
+             card.onclick = function () {
+                window.sessionStorage.setItem("rdetail", JSON.stringify(restaurant.restaurant));
+                window.location.href = "detail.html";
+
+             
+             }
     
     
 
@@ -93,11 +100,8 @@ var request = new XMLHttpRequest()
 
 // jump to next page
 function nextClick() {
-    Ipage = Number(document.getElementById('page').innerText) +1 
-    //document.getElementById('page').innerText = Ipage.toString();
-
+    Ipage = Number(document.getElementById('page').innerText) +1
     window.sessionStorage.setItem("page", Ipage.toString());
-    //location.reload();
     updateURL();
 }
 
@@ -105,10 +109,7 @@ function nextClick() {
 function previousClick() {
     Ipage = Number(document.getElementById('page').innerText) -1
     if (Ipage > 0 ){
-    	//document.getElementById('page').innerText = Ipage.toString();
-
         window.sessionStorage.setItem("page", Ipage.toString());
-    	//location.reload();
     	updateURL();
     }
    
@@ -116,7 +117,6 @@ function previousClick() {
 
 // get previous page number
 function getPage() {
-    //var pg = document.getElementById('page').innerText;
     var pg = window.sessionStorage.getItem("page");
     if (pg==null){
         console.log('1');
@@ -138,8 +138,6 @@ function jumpPage(){
         Ipage = document.getElementById("tpdown").value;
         document.getElementById("tpdown").value = null;
     }
-    //document.getElementById('page').innerText = Ipage;     
-
     if (Ipage != ''){
         window.sessionStorage.setItem("page", Ipage);
         updateURL();
@@ -175,7 +173,6 @@ function checkURLpage() {
 
         if (!(current === newp)) {
             window.sessionStorage.setItem("page", newp);
-            //getApi();
         }
     }
     else {
@@ -191,145 +188,18 @@ function getApi() {
     if (apig == null) {
         window.sessionStorage.setItem("apiurl", apiurl);
         return apiurl;
-        //var apiurl = 'https://api.zomato.com/v2/search.json?city_id=334&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03';
     }
     else {
        
         page = getPage();
         page = parseInt(page)-1;
         page = Math.max(0,page*20-1);
-        console.log(page);
         pre = apig.split('&start=');
         apig = pre[0] + '&start=' + page.toString()+ "&count=" +pre[1].split("&count=")[1];
         
 	}
     window.sessionStorage.setItem("apiurl", apig);
     
-	console.log(apig);
     return apig;
 }
-
-
-/*
-function byTitle(){
-    key = document.getElementById('key').value;
-
-    if (key!=''){
-    	apiurl = 'https://api.themoviedb.org/3/search/movie?api_key=b7f9af2647fdef6d0633f07337802317&query='+key+'&page=1'
-    	window.sessionStorage.setItem("page", '1');
-	window.sessionStorage.setItem("apiurl", apiurl);
-
- 	url = window.location.href;
-
- 	if ( url.includes("&page=")){
-		pre = url.split("&page=");
-      		window.location.href = pre[0]+ "&WithTitle=" + key;
-        }
-	else {
-		window.location.search += "&WithTitle=" + key;
-	}
-    }
-}
-
-
-
-
-
-
-function byGenre(){
-    document.getElementById("dowmBox").style.display = "block";
-    var generAPI = 'https://api.themoviedb.org/3/genre/movie/list?api_key=b7f9af2647fdef6d0633f07337802317';
-    const box = document.getElementById("geners");
-    if (box.style.display=="block"){
-	box.style.display="none";
-  	box.removeChild(document.getElementById("tb"));
-    }
-    else{
-    	box.style.display="block";
-    	var x = document.createElement("TABLE");
-  	x.setAttribute("id", "tb");
-	x.style.float="right";
-	x.style.width = "100%";
-	x.style.overflow =" scroll";
-    	box.appendChild(x);
-
-    	var request = new XMLHttpRequest()
-    	    request.open("GET", generAPI);
-    	    request.onload = function () {
-
-            	// Begin accessing JSON data here
-            	var generList = JSON.parse(this.response).genres;
-	    	console.log(generList);	
-	   	 var i =0;
-	  	 var y = x.insertRow(0);
-
-	    	for (i; i< generList.length; i++){ 
-		    var gener = generList[i];
-		    funstr = "GenreAPI(" + gener.id  + ")";
-		    if ((1+i) % 4 ==1){
-			var y = x.insertRow(Math.floor((1+i) / 4));
-			var z = y.insertCell((1+i) % 4 -1);
- 		    	z.innerHTML= gener.name ;
-			z.style.border = "2px solid rgb(228, 227, 247)";
-			z.style.padding = "0px 1px 1px 0px";
-			z.setAttribute("onclick", funstr);
-		    }
-		    else{
-			var z = y.insertCell((1+i) % 4 -1);
- 		    	z.innerHTML= gener.name ;
-			z.style.border = "2px solid rgb(228, 227, 247)";
-			z.style.padding = "0px 1px 1px 0px";
-			z.setAttribute("onclick", funstr);
-		    }		
-	       }
-		var j = 4 - (generList.length % 4);
-		while( j>0 ){
-		    var z = y.insertCell(4-j);
- 		    z.innerHTML="" ;
-		    z.style.border = "2px solid rgb(228, 227, 247)";
-		    j -= 1;
-		}
-
-    	}
-   
-        request.send();
-    }
-}
-
-
-function GenreAPI(gid){
-
-
-
-   console.log(gid);
-    apiurl = 'https://api.themoviedb.org/3/discover/movie?api_key=b7f9af2647fdef6d0633f07337802317&sort_by=popularity.desc&page=1&with_genres=' + gid ;
-    window.sessionStorage.setItem("page", '1');
-    window.sessionStorage.setItem("apiurl", apiurl);
-
-    url = window.location.href;
-    if ( url.includes("&WithGenres=")){
-	
-    	pre = url.split("&WithGenres=");
-    	window.location.href = pre[0]+ "&WithGenres=" + gid;
-    }
-    else if ( url.includes("&page=")){
-	pre = url.split("&page=");
-      	window.location.href = pre[0]+ "&WithGenres=" + gid;
-    }
-    else {
-	window.location.search += "&WithGenres=" + gid;
-    }
-
-}
-
-*/
-
-
-
-
-
-
-
-
-
 
