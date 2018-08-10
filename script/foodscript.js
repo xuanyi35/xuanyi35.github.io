@@ -1,21 +1,17 @@
 var apiurl = 'https://api.zomato.com/v2/search.json?city_id=334&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03';
 
 function loadMain() {
-  
-    console.log("in");
-
     const app = document.getElementById('root');
-
 
     const container = document.createElement('div');				// root append container
     container.setAttribute('class', 'container');
     app.appendChild(container);
 
-    //checkURLpage();
+    checkURLpage();
 
-    //api = getApi();
+    api = getApi();
 	//console.log(api);
-     api = apiurl;
+    // api = apiurl;
 	
     var page = getPage();
     document.getElementById('page').innerHTML = page;
@@ -35,14 +31,10 @@ var request = new XMLHttpRequest()
 
             const name = document.createElement('h4');
             name.textContent = restaurant.restaurant.name;
-       console.log(restaurant.restaurant.name);
             const img = document.createElement("img");
             img.src = restaurant.restaurant.photos[1].photo.url;
-         
-
-            container.appendChild(card);					// container append cards (movies)
+            container.appendChild(card);
             card.appendChild(name);
-           
             card.appendChild(img);
 
   
@@ -62,6 +54,7 @@ var request = new XMLHttpRequest()
 
     const previous = document.createElement('button');
     previous.setAttribute('id', 'previousBelow');
+    previous.setAttribute('class', 'btn1');
     previous.innerHTML = '<';
     bar.appendChild(previous);
     document.getElementById('previousBelow').onclick = previousClick;
@@ -73,6 +66,7 @@ var request = new XMLHttpRequest()
 
     const next = document.createElement('button');
     next.setAttribute('id', 'nextBelow');
+    next.setAttribute('class', 'btn1');
     next.innerHTML = '>';
     bar.appendChild(next);
     document.getElementById('nextBelow').onclick = nextClick;
@@ -87,21 +81,13 @@ var request = new XMLHttpRequest()
  
     const godown = document.createElement('button');
     godown.setAttribute('id', 'godown');
+    godown.setAttribute('class', 'btn1');
     godown.innerHTML = 'Go!';
-    godown.style.width="3%";
     bar.appendChild(godown);
     document.getElementById('godown').onclick = jumpPage;
 
 
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -149,15 +135,15 @@ function jumpPage(){
     Ipage = document.getElementById('toPage').value;
     document.getElementById('toPage').value =null;
     if (Ipage == ''){
- 	Ipage = document.getElementById("tpdown").value;
+        Ipage = document.getElementById("tpdown").value;
         document.getElementById("tpdown").value = null;
     }
     //document.getElementById('page').innerText = Ipage;     
 
-    window.sessionStorage.setItem("page", Ipage);
-    //location.reload();
-
-    updateURL();
+    if (Ipage != ''){
+        window.sessionStorage.setItem("page", Ipage);
+        updateURL();
+    }
 
 }
 
@@ -166,7 +152,7 @@ function jumpPage(){
 
 
 
-/*
+
 function updateURL(){	
     url = window.location.href;
     addURL = "&page=" + getPage();
@@ -189,29 +175,13 @@ function checkURLpage() {
 
         if (!(current === newp)) {
             window.sessionStorage.setItem("page", newp);
+            //getApi();
         }
     }
     else {
         window.sessionStorage.setItem("page", '1');
     }
-    //////// api 
-    if (url.includes("&WithTitle=")) {
-        window.sessionStorage.setItem("apiurl", 'https://api.themoviedb.org/3/search/movie?api_key=b7f9af2647fdef6d0633f07337802317&query=' + url.split("&WithTitle=")[1]);
-    }
-    else if (url.includes("&WithGenres=")){
-
-	if (url.includes("&page=")){
-	    window.sessionStorage.setItem ("apiurl", 'https://api.themoviedb.org/3/discover/movie?api_key=b7f9af2647fdef6d0633f07337802317&sort_by=popularity.desc&page=1&with_genres=' + url.split("&WithGenres=")[1].split("&page=")[0]) ;
-    	}
-	else{
-	
-
-	    window.sessionStorage.setItem ("apiurl", 'https://api.themoviedb.org/3/discover/movie?api_key=b7f9af2647fdef6d0633f07337802317&sort_by=popularity.desc&page=1&with_genres=' + url.split("&WithGenres=")[1]) ;
-	}
-    }
-    else {
-        window.sessionStorage.setItem("apiurl", apiurl);
-    }
+    
 }
 
 
@@ -221,22 +191,26 @@ function getApi() {
     if (apig == null) {
         window.sessionStorage.setItem("apiurl", apiurl);
         return apiurl;
+        //var apiurl = 'https://api.zomato.com/v2/search.json?city_id=334&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03';
     }
     else {
        
         page = getPage();
-        pre = apig.split('&page=');
-        apig = pre[0] + '&page=' + page;
-        if (pre[1].includes("&with_genres=")){
-	    apig = apig + "&with_genres=" + pre[1].split("&with_genres=")[1];
+        page = parseInt(page)-1;
+        page = Math.max(0,page*20-1);
+        console.log(page);
+        pre = apig.split('&start=');
+        apig = pre[0] + '&start=' + page.toString()+ "&count=" +pre[1].split("&count=")[1];
+        
 	}
-        window.sessionStorage.setItem("apiurl", apig);
-    }
+    window.sessionStorage.setItem("apiurl", apig);
+    
 	console.log(apig);
     return apig;
-}*/
+}
 
 
+/*
 function byTitle(){
     key = document.getElementById('key').value;
 
@@ -348,7 +322,7 @@ function GenreAPI(gid){
 
 }
 
-
+*/
 
 
 

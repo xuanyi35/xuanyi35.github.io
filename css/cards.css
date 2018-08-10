@@ -38,18 +38,20 @@ p {
 }
 
 .card {
-  margin: 1rem;
+  /*margin: 1rem;*/
+  margin: 1rem auto 1rem auto;
   background: white;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
   border-radius: 12px;
   overflow: hidden;
   transition: all .2s linear;
+  width:70vw;
 }
 
 .card img {
   display: block;
   margin: 1rem auto;
-  width:80vw;
+  width:60vw;
 }
 
 .card:hover {
@@ -57,21 +59,23 @@ p {
   transform: translate3D(0, -2px, 0);
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 600px) {
   .card {
+    margin: 1rem;
     flex: 1 1 calc(50% - 2rem);
   }
  .card img {
     display: block;
     margin: 1rem auto;
     width:40vw;
-    height:40vh;
+    height:40vw;
   }
 
 }
 
-@media screen and (min-width: 1050px) {
+@media screen and (min-width: 1000px) {
   .card {
+    margin: 1rem;
     flex: 1 1 calc(25% - 2rem);
   }
   .card img {
@@ -104,12 +108,7 @@ p {
     display:inline;
     min-width:30px;
     text-align:center;
-    background-image:linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+    background:transparent;
 }
 
-.likeBtn {
-    height: 2.5em;
-    float : right;  
-    text-align:center;
-    background-image:linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
-}
+
