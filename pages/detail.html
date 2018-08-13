@@ -4,20 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/detail.css">
     <script src="../script/script.js" type="text/javascript"></script>
     <script src="../script/detailscript.js" type="text/javascript"></script>
 
 </head>
-<style>
-    #pic{
-        width:60vw;
-    }
-    @media screen and (max-width: 600px) {
-        #pic{
-            width:80vw;
-        }
-
-</style>
 <body onload="mainDetail()">
 
 
@@ -38,12 +29,18 @@
             
             <h3 id='name' style="padding-left:3%; "> </h3>
             <img id= 'pic' src="#" alt="Sorry We cannot find a Picture" style="padding-left:3%;">
+             <div id="box1">
+                 <div id="box2">
+                </div>
+             </div>
+             <div id="information">
                 <p id ='cuisines' style="padding-left:3%;">  </p>
-            <p style="padding-left:3%;" > Opening hours: </p>
-            <p id = 'time' style="padding-left:6%;" > </p>
-            <p id='location' style="padding-left:3%;">  </p>
-
-            <div id="googleMap" style="width:60vw;height:60vh;"> </div>
+                <p style="padding-left:3%;" > Opening hours: </p>
+                <p id = 'time' style="padding-left:6%;" > </p>
+                <p id='location' style="padding-left:3%;">  </p>
+            </div>
+            <!--p style="padding-left:3%;" ><button id="btn" onclick="MapFun()"> Show Map </button> </p-->
+            <div id="googleMap" > </div>
 
       </div>
     </div>

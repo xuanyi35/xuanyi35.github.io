@@ -1,7 +1,10 @@
 function mainDetail() {
+    
+
     rest = window.sessionStorage.getItem("rdetail");
     rest = JSON.parse(rest);
-    console.log(rest);
+
+    //console.log(rest);
     
     Rname = document.getElementById('name');
     Rname.innerHTML = rest.name;
@@ -12,7 +15,18 @@ function mainDetail() {
     
     cuisines = document.getElementById('cuisines');
     cuisines.innerHTML = "Cuisines: " + rest.cuisines;
-    ;
+    
+    const box = document.getElementById('box2');
+    imgList = rest.photos;
+    imgList.forEach(i => {
+        var photoX = document.createElement("IMG");
+        photoX.src = i.photo.url;
+        box.appendChild(photoX);
+                     
+    });
+    
+    
+    
     Rtime = document.getElementById('time');
     const timeList = rest.all_timings_customized.opening_hours;
     timeList.forEach(t => {
@@ -22,8 +36,7 @@ function mainDetail() {
     
     locat = document.getElementById('location');
     locat.innerHTML = rest.location.address +'<br />@' + rest.location.locality ;
-    
-    
+
     //updateURL();
 }
 
@@ -44,3 +57,26 @@ function updateURL() {
     }
     
 }
+
+function MapFun(){
+    var Gmap = document.getElementById("googleMap");
+    var btn = document.getElementById("btn");
+    if (Gmap.style.display == "block"){
+        Gmap.style.display = "none";
+        btn.innerHTML = "Show Map";
+
+        //window.scrollTo(0,document.body.scrollHeight);
+
+    }
+    else{
+
+        Gmap.style.display = "block";
+        btn.innerHTML = "Hide Map";
+        
+    }
+    
+    
+}
+
+
+

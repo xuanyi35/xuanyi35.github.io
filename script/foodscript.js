@@ -1,5 +1,9 @@
 var apiurl = 'https://api.zomato.com/v2/search.json?city_id=334&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03';
 
+// get city https://developers.zomato.com/api/v2.1/cities?q=new&apikey=bb2b9736d46dfe9907e06393396a3b03
+// cuision ids https://developers.zomato.com/api/v2.1/cuisines?city_id=334&apikey=bb2b9736d46dfe9907e06393396a3b03
+// with cuision https://api.zomato.com/v2/search.json?city_id=334&cuisines=6&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03
+
 function loadMain() {
     const app = document.getElementById('root');
 
@@ -41,7 +45,9 @@ var request = new XMLHttpRequest()
 
              card.onclick = function () {
                 window.sessionStorage.setItem("rdetail", JSON.stringify(restaurant.restaurant));
-                window.location.href = "detail.html";
+                //window.sessionStorage.setItem("rid", restaurant.restaurant.id);
+                window.open("detail.html");
+
 
              
              }
