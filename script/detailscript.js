@@ -21,6 +21,9 @@ function mainDetail() {
     imgList.forEach(i => {
         var photoX = document.createElement("IMG");
         photoX.src = i.photo.url;
+        photoX.addEventListener("click", function(){
+            document.getElementById("pic").src = i.photo.url;
+        });
         box.appendChild(photoX);
                      
     });
@@ -42,7 +45,7 @@ function mainDetail() {
 
 
 
-
+/*
 function updateURL() {
     url = window.location.href;
     addURL = "?mid=" + window.sessionStorage.getItem("mid").toString();
@@ -57,6 +60,7 @@ function updateURL() {
     }
     
 }
+ */
 
 function MapFun(){
     var Gmap = document.getElementById("googleMap");

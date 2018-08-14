@@ -8,8 +8,8 @@
     transform: rotate(270deg) translateX(-100%);
     transform-origin: top left;*/
     background-color:transparent;
-    width:20vw;
-    height:30vw;
+    width:21vw;
+    height:37vw;
     float:right;
 }
 #box1 img{
@@ -40,14 +40,18 @@
 
 #pic{
     width:60vw;
+    padding-left:3%;
+    max-height: 55vw;
 }
 @media screen and (max-width: 600px) {
     #pic{
         width:80vw;
+        padding-left: 5vw;
+        max-height: initial;
     }
 
 #box1 {
-    margin:0px 8vw 0px 2vw;
+    margin-left: 5vw;
     overflow-x:hidden;
     transform: rotate(270deg) translateX(-100%);
     transform-origin: top left;
@@ -59,7 +63,6 @@
 #box1 img{
     width:35vw;
     height:35vw;
-
 }
 #box2 {
      transform: rotate(90deg) translateY(-35vw);
@@ -73,7 +76,15 @@
     height:80vw;
 }
 #information{
-    margin-top:37vw;
+    margin-top:35vw;
     text-align:left;
+    position:relative;
+    box-sizing:border-box;
+}
+#inforIn{
     position:absolute;
+}
+/*#information p{
+ position:absolute;
+}*/
 }
