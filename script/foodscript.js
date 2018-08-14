@@ -184,7 +184,20 @@ function checkURLpage() {
     else {
         window.sessionStorage.setItem("page", '1');
     }
-    
+    //////// api
+    if (url.includes("&cuisine=")) {
+        if (url.includes("&page=")) {
+            window.sessionStorage.setItem("apiurl",'https://api.zomato.com/v2/search.json?city_id=334&cuisines='+ url.split("&cuisine=")[1].split("&page=")[0] + '&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03');
+        }
+        else {
+            
+            
+            window.sessionStorage.setItem("apiurl", 'https://api.zomato.com/v2/search.json?city_id=334&cuisines='+ url.split("&cuisine=")[1] + '&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03');
+        }
+    }
+    else {
+        window.sessionStorage.setItem("apiurl", apiurl);
+    }
 }
 
 
@@ -207,5 +220,86 @@ function getApi() {
     window.sessionStorage.setItem("apiurl", apig);
     
     return apig;
+}
+
+
+function byCuisine() {
+    var CuiAPI = 'https://developers.zomato.com/api/v2.1/cuisines?city_id=334&apikey=bb2b9736d46dfe9907e06393396a3b03';
+    const box = document.getElementById("cuisines");
+    if (box.style.display == "block") {
+        box.style.display = "none";
+    }
+    else {
+        box.style.display = "block";
+        var x = document.createElement("TABLE");
+        x.setAttribute("id", "tb");
+       // x.style.width = "80";
+        box.appendChild(x);
+        
+        var request = new XMLHttpRequest()
+        request.open("GET", CuiAPI);
+        request.onload = function () {
+            
+            // Begin accessing JSON data here
+            var CuiList = JSON.parse(this.response).cuisines;
+            var i = 0;
+            var y = x.insertRow(0);
+            
+            for (i; i < CuiList.length; i++) {
+                var cui = CuiList[i].cuisine;
+                console.log(cui);
+                funstr = "GenreAPI(" + cui.cuisine_id +  ")";
+                if ((1 + i) % 4 == 1) {
+                    var y = x.insertRow(Math.floor((1 + i) / 4));
+                    var z = y.insertCell((1 + i) % 4 - 1);
+                    z.innerHTML = cui.cuisine_name;
+                    z.style.border = "2px solid rgb(228, 227, 247)";
+                    z.style.padding = "0px 1px 1px 0px";
+                    z.setAttribute("onclick", funstr);
+                }
+                else {
+                    var z = y.insertCell((1 + i) % 4 - 1);
+                    z.innerHTML = cui.cuisine_name;
+                    z.style.border = "2px solid rgb(228, 227, 247)";
+                    z.style.padding = "0px 1px 1px 0px";
+                    z.setAttribute("onclick", funstr);
+                }
+            }
+            var j = 4 - (CuiList.length % 4);
+            while (j > 0) {
+                var z = y.insertCell(4 - j);
+                z.innerHTML = "";
+                z.style.border = "2px solid rgb(228, 227, 247)";
+                j -= 1;
+            }
+            
+        }
+        
+        request.send();
+    }
+    
+}
+
+
+function GenreAPI(cid){
+    window.sessionStorage.setItem("page", '1');
+    apiurl ='https://api.zomato.com/v2/search.json?city_id=334&cuisines='+ cid + '&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03';
+    window.sessionStorage.setItem("apiurl", apiurl);
+    
+    url = window.location.href;
+    if (url.includes("&cuisine=")) {
+        pre = url.split("&cuisine=");
+        window.location.href = pre[0] + "&cuisine=" + cid;
+    }
+    else if (url.includes("&page=")) {
+        pre = url.split("&page=");
+        window.location.href = pre[0] + "&cuisine=" + cid;
+    }
+    else {
+        window.location.search += "&cuisine=" + cid;
+    }
+
+    
+    
 }
 
