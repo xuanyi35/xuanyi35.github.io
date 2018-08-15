@@ -50,32 +50,6 @@
 </div>
 
 
-<script>
-    function myMap() {
-        //       import map     //
-        rest = window.sessionStorage.getItem("rdetail");
-        rest = JSON.parse(rest);
-        var mapProp= {
-            center:new google.maps.LatLng(rest.location.latitude, rest.location.longitude),
-            //center:new google.maps.LatLng(35.6925286,139.6810207),
-
-            zoom:12,
-        };
-        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-        
-        
-        var pos = new google.maps.LatLng(rest.location.latitude, rest.location.longitude);
-        var marker = new google.maps.Marker({position:pos});
-        marker.setMap(map);
-        var infowindow = new google.maps.InfoWindow({
-                content: rest.name
-        });
-        marker.addListener('click', function() {
-           infowindow.open(map, marker);
-        });
-    }
-</script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMdn1JdmOlEF4C0GyGUOY0MvUbEg-Jd7Q&callback=myMap"></script>
 
 </body>

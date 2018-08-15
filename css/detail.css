@@ -39,9 +39,9 @@
 
 
 #pic{
-    width:60vw;
-    padding-left:3%;
-    max-height: 55vw;
+    width:45vw;
+    padding-left:10vw;
+    max-height: 45vw;
 }
 @media screen and (max-width: 600px) {
     #pic{

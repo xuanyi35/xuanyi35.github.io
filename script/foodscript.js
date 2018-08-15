@@ -32,7 +32,7 @@ function loadMain() {
         request.send();
     }
     else{
-        document.getElementById("city").innerText = 'Edmonton';
+        document.getElementById("city").innerText = 'Edmonton, AB';
     }
 
  ///////////
@@ -44,6 +44,7 @@ function loadMain() {
         var data = JSON.parse(this.response);
         var foodlist = data.restaurants;
         try {
+            var i =0;
             foodlist.forEach(restaurant => {
                 const card = document.createElement('div');
                 card.setAttribute('class', 'card');
@@ -52,6 +53,7 @@ function loadMain() {
                 name.textContent = restaurant.restaurant.name;
                 const img = document.createElement("img");
                 img.src = restaurant.restaurant.photos[0].photo.url;
+                img.alt = i.toString();
                 const info = document.createElement('p');
                 info.innerHTML = "cuisines: " + restaurant.restaurant.cuisines + '<br />'
                              +"@" +restaurant.restaurant.location.locality;
@@ -60,12 +62,21 @@ function loadMain() {
                 card.appendChild(name);
                 card.appendChild(img);
                 card.appendChild(info);
-
-                 card.onclick = function () {
-                    window.sessionStorage.setItem("rdetail", JSON.stringify(restaurant.restaurant));
-                    //window.sessionStorage.setItem("rid", restaurant.restaurant.id);
-                    window.open("detail.html");
-                 }
+                             
+                card.onclick = function () {
+                             
+                    //window.sessionStorage.setItem("rdetail", JSON.stringify(restaurant.restaurant));
+                    url = window.location.href;
+                    url = url.split("food.html")[1];
+                             console.log(url);
+                     if (url==""){
+                             window.open("detail.html"+"?&num="+ img.alt );
+                     }
+                     else{
+                        window.open("detail.html"+url+"&num="+ img.alt );
+                     }
+                }
+                i+=1;
             });
         }
         catch (err) {
@@ -239,7 +250,6 @@ function getApi() {
         
 	}
     window.sessionStorage.setItem("apiurl", apig);
-    console.log(apig);
     
     return apig;
 }
@@ -293,7 +303,7 @@ function byCuisine() {
                 }
             }
             var j = 4 - (CuiList.length % 4);
-            while (j > 0) {
+            while ((j > 0) && (j!=4) ){
                 var z = y.insertCell(4 - j);
                 z.innerHTML = "";
                 z.style.border = "2px solid rgb(228, 227, 247)";
@@ -329,30 +339,32 @@ function GenreAPI(cid){
 
 function GoCity(){
     var cityIn = document.getElementById("cityIn").value;
-    var cityApi = 'https://developers.zomato.com/api/v2.1/cities?q='+ cityIn +'&apikey=bb2b9736d46dfe9907e06393396a3b03';
-    var request = new XMLHttpRequest()
-    request.open("GET", cityApi);
-    request.onload = function () {
-        var cityList = JSON.parse(this.response).location_suggestions;
-        if (cityList.length ==0){
-            document.getElementById("root").innerText = "Sorry we cannot find such city";
-            document.getElementById("city").innerText = "N/A";
-        }
-        else{
-            //document.getElementById("city").innerText = cityList[0].name;
-            url = window.location.href;
-            if (url.includes("&city=")) {
-                pre = url.split("?&city=");
-                window.location.href = pre[0] + "?&city=" + cityList[0].id;
+    if (cityIn.length!=0){
+        var cityApi = 'https://developers.zomato.com/api/v2.1/cities?q='+ cityIn +'&apikey=bb2b9736d46dfe9907e06393396a3b03';
+        var request = new XMLHttpRequest()
+        request.open("GET", cityApi);
+        request.onload = function () {
+            var cityList = JSON.parse(this.response).location_suggestions;
+            if (cityList.length ==0){
+                document.getElementById("root").innerText = "Sorry we cannot find such city";
+                document.getElementById("city").innerText = "N/A";
             }
-            else {
-                pre = url.split("food.html")
-                window.location.href = pre[0] + "food.html?&city=" + cityList[0].id;
+            else{
+                //document.getElementById("city").innerText = cityList[0].name;
+                url = window.location.href;
+                if (url.includes("&city=")) {
+                    pre = url.split("?&city=");
+                    window.location.href = pre[0] + "?&city=" + cityList[0].id;
+                }
+                else {
+                    pre = url.split("food.html")
+                    window.location.href = pre[0] + "food.html?&city=" + cityList[0].id;
+                }
             }
+            
         }
-        
+      request.send();
     }
-  request.send();
 }
 
 
