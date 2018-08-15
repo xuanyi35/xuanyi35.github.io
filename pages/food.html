@@ -37,14 +37,17 @@
          <div style="position:fixed; width:100vw; background-image: url('../img/wallpaper.jpg');">
              <span style="font-size:25px;cursor:pointer; margin-left:2%; " onclick="openNav();">&#9776; Xuanyi's Blog </span>
 
-             <button onclick="byCuisine()" style="margin-left: 3%; background:transparent;">Cuisines</button>
+<button onclick="byCuisine()" style="margin-left: 3%; background:transparent; border-radius: 12px;">Cuisines</button>
             
             <div id="cuisines" style="display:none; background: rgba(255,255,255,0.9); width:100%; max-height:80vh; box-sizing:border-box "> </div>
-         
+            <br>
+            <p id = 'city' style="margin-left:3%" ></p> <br> <input type="text" id ="cityIn" style="line-height: 1.5em; margin-left:2%">
+                <button onclick="GoCity()" style=" background:transparent; border-radius: 12px;">Goto City</button>
+            
          </div>
          
          <br>
-         <div class="fixed-bg" style="margin-top:25px; ">
+         <div class="fixed-bg" style="margin-top:70px; ">
              <div class="transbox" id="moviesL">
  
                 <div class="bar">

@@ -16,46 +16,61 @@ function loadMain() {
     api = getApi();
     var page = getPage();
     document.getElementById('page').innerHTML = page;
-  
+    
+  // update CITY name //
+    url = window.location.href;
+    if ( url.includes("&city=")){
+        var cityID = url.split("&city=")[1].split("&")[0].toString();
+        var cityNameAPI = 'https://developers.zomato.com/api/v2.1/cities?city_ids='+ cityID +'&apikey=bb2b9736d46dfe9907e06393396a3b03';
+        
+        var request = new XMLHttpRequest()
+        request.open("GET", cityNameAPI);
+        request.onload = function () {
+            var data = JSON.parse(this.response).location_suggestions[0];
+            document.getElementById("city").innerText = data.name;
+        }
+        request.send();
+    }
+    else{
+        document.getElementById("city").innerText = 'Edmonton';
+    }
 
-var request = new XMLHttpRequest()
+ ///////////
+    var request = new XMLHttpRequest()
     request.open("GET", api);
     request.onload = function () {
 
         // Begin accessing JSON data here
         var data = JSON.parse(this.response);
         var foodlist = data.restaurants;
-        console.log(foodlist);
-        foodlist.forEach(restaurant => {
-            const card = document.createElement('div');
-            card.setAttribute('class', 'card');
+        try {
+            foodlist.forEach(restaurant => {
+                const card = document.createElement('div');
+                card.setAttribute('class', 'card');
 
-            const name = document.createElement('h4');
-            name.textContent = restaurant.restaurant.name;
-            const img = document.createElement("img");
-            img.src = restaurant.restaurant.photos[0].photo.url;
-            const info = document.createElement('p');
-            info.innerHTML = "cuisines: " + restaurant.restaurant.cuisines + '<br />'
-                         +"@" +restaurant.restaurant.location.locality;
-                         
-            container.appendChild(card);
-            card.appendChild(name);
-            card.appendChild(img);
-            card.appendChild(info);
+                const name = document.createElement('h4');
+                name.textContent = restaurant.restaurant.name;
+                const img = document.createElement("img");
+                img.src = restaurant.restaurant.photos[0].photo.url;
+                const info = document.createElement('p');
+                info.innerHTML = "cuisines: " + restaurant.restaurant.cuisines + '<br />'
+                             +"@" +restaurant.restaurant.location.locality;
+                             
+                container.appendChild(card);
+                card.appendChild(name);
+                card.appendChild(img);
+                card.appendChild(info);
 
-             card.onclick = function () {
-                window.sessionStorage.setItem("rdetail", JSON.stringify(restaurant.restaurant));
-                //window.sessionStorage.setItem("rid", restaurant.restaurant.id);
-                window.open("detail.html");
-
-
-             
-             }
-    
-    
-
-        });
-
+                 card.onclick = function () {
+                    window.sessionStorage.setItem("rdetail", JSON.stringify(restaurant.restaurant));
+                    //window.sessionStorage.setItem("rid", restaurant.restaurant.id);
+                    window.open("detail.html");
+                 }
+            });
+        }
+        catch (err) {
+            //
+        }
     }
     request.send();
 
@@ -125,7 +140,7 @@ function previousClick() {
 function getPage() {
     var pg = window.sessionStorage.getItem("page");
     if (pg==null){
-        console.log('1');
+        //console.log('1');
 	return '1';
     }
     else{
@@ -186,17 +201,23 @@ function checkURLpage() {
     }
     //////// api
     if (url.includes("&cuisine=")) {
-        if (url.includes("&page=")) {
+        if (url.includes("&city=")) {
+            var cityID = url.split("&city=")[1].split("&")[0];
+            window.sessionStorage.setItem("apiurl",'https://api.zomato.com/v2/search.json?city_id=' + cityID +'&cuisines='+ url.split("&cuisine=")[1].split("&page=")[0] + '&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03');
+        }
+        else{
             window.sessionStorage.setItem("apiurl",'https://api.zomato.com/v2/search.json?city_id=334&cuisines='+ url.split("&cuisine=")[1].split("&page=")[0] + '&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03');
         }
-        else {
-            
-            
-            window.sessionStorage.setItem("apiurl", 'https://api.zomato.com/v2/search.json?city_id=334&cuisines='+ url.split("&cuisine=")[1] + '&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03');
-        }
+       
     }
     else {
-        window.sessionStorage.setItem("apiurl", apiurl);
+        if (url.includes("&city=")) {
+            var cityID = url.split("&city=")[1].split("&")[0].toString();
+            window.sessionStorage.setItem("apiurl",'https://api.zomato.com/v2/search.json?city_id='+ cityID +'&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03');
+        }
+        else{
+            window.sessionStorage.setItem("apiurl", apiurl);
+        }
     }
 }
 
@@ -218,6 +239,7 @@ function getApi() {
         
 	}
     window.sessionStorage.setItem("apiurl", apig);
+    console.log(apig);
     
     return apig;
 }
@@ -225,6 +247,11 @@ function getApi() {
 
 function byCuisine() {
     var CuiAPI = 'https://developers.zomato.com/api/v2.1/cuisines?city_id=334&apikey=bb2b9736d46dfe9907e06393396a3b03';
+    if (url.includes("&city=")) {
+        var cityID = url.split("&city=")[1].split("&")[0];
+        CuiAPI = 'https://developers.zomato.com/api/v2.1/cuisines?city_id=' + cityID +'&apikey=bb2b9736d46dfe9907e06393396a3b03';
+    }
+    
     const box = document.getElementById("cuisines");
     if (box.style.display == "block") {
         box.style.display = "none";
@@ -247,7 +274,7 @@ function byCuisine() {
             
             for (i; i < CuiList.length; i++) {
                 var cui = CuiList[i].cuisine;
-                console.log(cui);
+                //console.log(cui);
                 funstr = "GenreAPI(" + cui.cuisine_id +  ")";
                 if ((1 + i) % 4 == 1) {
                     var y = x.insertRow(Math.floor((1 + i) / 4));
@@ -298,8 +325,35 @@ function GenreAPI(cid){
     else {
         window.location.search += "&cuisine=" + cid;
     }
-
-    
-    
 }
+
+function GoCity(){
+    var cityIn = document.getElementById("cityIn").value;
+    var cityApi = 'https://developers.zomato.com/api/v2.1/cities?q='+ cityIn +'&apikey=bb2b9736d46dfe9907e06393396a3b03';
+    var request = new XMLHttpRequest()
+    request.open("GET", cityApi);
+    request.onload = function () {
+        var cityList = JSON.parse(this.response).location_suggestions;
+        if (cityList.length ==0){
+            document.getElementById("root").innerText = "Sorry we cannot find such city";
+            document.getElementById("city").innerText = "N/A";
+        }
+        else{
+            //document.getElementById("city").innerText = cityList[0].name;
+            url = window.location.href;
+            if (url.includes("&city=")) {
+                pre = url.split("?&city=");
+                window.location.href = pre[0] + "?&city=" + cityList[0].id;
+            }
+            else {
+                pre = url.split("food.html")
+                window.location.href = pre[0] + "food.html?&city=" + cityList[0].id;
+            }
+        }
+        
+    }
+  request.send();
+}
+
+
 
