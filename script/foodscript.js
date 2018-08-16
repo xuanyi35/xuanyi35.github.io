@@ -276,7 +276,7 @@ function byCuisine() {
     else {
         box.style.display = "block";
 	    
-     if (document.getElementByID("tb")==null){
+     if (document.getElementById("tb")==null){
 		
         var x = document.createElement("TABLE");
         x.setAttribute("id", "tb");
