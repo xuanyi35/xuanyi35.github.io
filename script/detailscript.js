@@ -17,6 +17,14 @@ function mainDetail() {
     else{
         cuisine = '0';
     }
+    ////
+    if (url.includes("&key=")){
+        key = url.split("&key=")[1].split("&")[0];
+    }
+    else{
+        key = '0';
+    }
+    ////
     if (url.includes("&page=")){
         page = url.split("&page=")[1].split("&");
         page = parseInt(page)-1;
@@ -28,7 +36,7 @@ function mainDetail() {
     num = url.split("&num=")[1].split("&");
     num=  parseInt(num);
     
-     api = 'https://api.zomato.com/v2/search.json?city_id=' + city +'&cuisines='+ cuisine +'&start=' + page.toString() +'&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03';
+     api = 'https://api.zomato.com/v2/search.json?city_id=' + city +'&cuisines='+ cuisine +'&q=' + key+ '&start=' + page.toString() +'&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03';
     console.log(api);
     var request = new XMLHttpRequest()
     request.open("GET", api);

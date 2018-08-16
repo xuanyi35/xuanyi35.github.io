@@ -126,5 +126,7 @@ p {
     text-align:center;
     background:transparent;
 }
-
-
+.btn2{
+    background:transparent;
+    border-radius: 12px;
+}

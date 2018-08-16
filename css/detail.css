@@ -2,19 +2,22 @@
 
 
 #box1 {
-    margin:0px 8vw 0px 2vw;
+    margin:0px 33vw 0px 2vw;
     overflow-y:scroll;
     /*overflow-x:hidden;
     transform: rotate(270deg) translateX(-100%);
     transform-origin: top left;*/
     background-color:transparent;
-    width:20vw;
-    height:37vw;
+    width:15vw;
+    height:30vw;
     float:right;
+    border-radius: 12px;
+    border:5px solid white ;
+
 }
 #box1 img{
-    width:20vw;
-    height:20vw;
+    width:14vw;
+    height:auto;
     display:inline-block;
     position:relative;
     padding: 3%;
@@ -39,52 +42,56 @@
 
 
 #pic{
-    width:45vw;
-    padding-left:10vw;
-    max-height: 45vw;
+    border:10px solid white ;
+    width:32vw;
+    margin-left:3vw;
+    border-radius: 12px;
+
 }
-@media screen and (max-width: 600px) {
+#information p,h6{
+    padding-left:3%;
+}
+@media screen and (max-width: 800px) {
     #pic{
         width:80vw;
-        padding-left: 5vw;
+        margin-left: 5vw;
         max-height: initial;
     }
 
-#box1 {
-    margin-left: 5vw;
-    overflow-x:hidden;
-    transform: rotate(270deg) translateX(-100%);
-    transform-origin: top left;
-    float:right;
-    width:35vw;
-    height:80vw;
-    float:left;
-}
-#box1 img{
-    width:35vw;
-    height:35vw;
-}
-#box2 {
-     transform: rotate(90deg) translateY(-35vw);
-     transform-origin: top left;
-     white-space:nowrap;
+    #box1 {
+        margin-left: 5vw;
+        overflow-x:hidden;
+        transform: rotate(270deg) translateX(-100%);
+        transform-origin: top left;
+        width:35vw;
+        height:80vw;
+        float:left;
+    }
+    #box1 img{
+        width:35vw;
+        height:35vw;
+    }
+    #box2 {
+         transform: rotate(90deg) translateY(-35vw);
+         transform-origin: top left;
+         white-space:nowrap;
 
-}
-#googleMap{
-    margin-left:5vw;
-    width:80vw;
-    height:80vw;
-}
-#information{
-    margin-top:35vw;
-    text-align:left;
-    position:relative;
-    box-sizing:border-box;
-}
-#inforIn{
-    position:absolute;
-}
-/*#information p{
- position:absolute;
-}*/
+    }
+    #googleMap{
+        margin-left:5vw;
+        width:80vw;
+        height:80vw;
+    }
+    #information{
+        margin-top:35vw;
+        text-align:left;
+        position:relative;
+        box-sizing:border-box;
+    }
+    #inforIn{
+        position:absolute;
+    }
+    #information p,h6{
+        padding-left:8vw;
+    }
 }

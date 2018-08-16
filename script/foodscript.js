@@ -1,9 +1,5 @@
 var apiurl = 'https://api.zomato.com/v2/search.json?city_id=334&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03';
 
-// get city https://developers.zomato.com/api/v2.1/cities?q=new&apikey=bb2b9736d46dfe9907e06393396a3b03
-// cuision ids https://developers.zomato.com/api/v2.1/cuisines?city_id=334&apikey=bb2b9736d46dfe9907e06393396a3b03
-// with cuision https://api.zomato.com/v2/search.json?city_id=334&cuisines=6&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03
-
 function loadMain() {
     const app = document.getElementById('root');
 
@@ -43,9 +39,12 @@ function loadMain() {
         // Begin accessing JSON data here
         var data = JSON.parse(this.response);
         var foodlist = data.restaurants;
+//console.log(foodlist);
         try {
             var i =0;
             foodlist.forEach(restaurant => {
+                console.log(restaurant);
+
                 const card = document.createElement('div');
                 card.setAttribute('class', 'card');
 
@@ -68,9 +67,8 @@ function loadMain() {
                     //window.sessionStorage.setItem("rdetail", JSON.stringify(restaurant.restaurant));
                     url = window.location.href;
                     url = url.split("food.html")[1];
-                             console.log(url);
                      if (url==""){
-                             window.open("detail.html"+"?&num="+ img.alt );
+                        window.open("detail.html"+"?&num="+ img.alt );
                      }
                      else{
                         window.open("detail.html"+url+"&num="+ img.alt );
@@ -151,8 +149,7 @@ function previousClick() {
 function getPage() {
     var pg = window.sessionStorage.getItem("page");
     if (pg==null){
-        //console.log('1');
-	return '1';
+        return '1';
     }
     else{
     	return pg;
@@ -221,6 +218,16 @@ function checkURLpage() {
         }
        
     }
+    else if (url.includes("&key=")){
+        if (url.includes("&city=")) {
+             var cityID = url.split("&city=")[1].split("&")[0];
+             window.sessionStorage.setItem("apiurl", 'https://api.zomato.com/v2/search.json?city_id=' + cityID + '&q=' + url.split("&key=")[1].split("&page=")[0]  + '&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03' );
+        }
+         else{
+             window.sessionStorage.setItem("apiurl", 'https://api.zomato.com/v2/search.json?city_id=334&q=' + url.split("&key=")[1].split("&page=")[0]  + '&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03');
+        }
+    /////////////
+    }
     else {
         if (url.includes("&city=")) {
             var cityID = url.split("&city=")[1].split("&")[0].toString();
@@ -234,6 +241,7 @@ function checkURLpage() {
 
 
 function getApi() {
+
     var apig = window.sessionStorage.getItem("apiurl");
 	
     if (apig == null) {
@@ -250,7 +258,6 @@ function getApi() {
         
 	}
     window.sessionStorage.setItem("apiurl", apig);
-    
     return apig;
 }
 
@@ -284,7 +291,6 @@ function byCuisine() {
             
             for (i; i < CuiList.length; i++) {
                 var cui = CuiList[i].cuisine;
-                //console.log(cui);
                 funstr = "GenreAPI(" + cui.cuisine_id +  ")";
                 if ((1 + i) % 4 == 1) {
                     var y = x.insertRow(Math.floor((1 + i) / 4));
@@ -328,17 +334,25 @@ function GenreAPI(cid){
         pre = url.split("&cuisine=");
         window.location.href = pre[0] + "&cuisine=" + cid;
     }
-    else if (url.includes("&page=")) {
+    /*else if (url.includes("&page=")) {
         pre = url.split("&page=");
         window.location.href = pre[0] + "&cuisine=" + cid;
     }
     else {
         window.location.search += "&cuisine=" + cid;
+    }*/
+    else if (url.includes("&city=")) {
+        pre = url.split("&city=");
+        window.location.href = pre[0] + "&city=" + cityID + "&cuisine=" + cid;
+    }
+    else {
+        window.location.href = url.split("food.html")[0]+ "food.html?&cuisine=" + cid;
     }
 }
 
 function GoCity(){
     var cityIn = document.getElementById("cityIn").value;
+    document.getElementById("cityIn").value ="";
     if (cityIn.length!=0){
         var cityApi = 'https://developers.zomato.com/api/v2.1/cities?q='+ cityIn +'&apikey=bb2b9736d46dfe9907e06393396a3b03';
         var request = new XMLHttpRequest()
@@ -366,6 +380,44 @@ function GoCity(){
       request.send();
     }
 }
+
+function findRes(){
+    var ResIn = document.getElementById("cityIn").value;
+    document.getElementById("cityIn").value ="";
+    if (cityIn.length!=0){
+        url = window.location.href;
+        if (url.includes("&city=")){
+            cityID = url.split("&city=")[1].split("&")[0]
+        }
+        else{
+            cityID = '334';
+        }
+        var ResApi = 'https://api.zomato.com/v2/search.json?city_id=' + cityID + '&q=' + ResIn + '&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03';
+        window.sessionStorage.setItem("apiurl", ResApi);
+        
+        if (url.includes("&key=")) {
+            pre = url.split("&key=");
+            window.location.href = pre[0] + "&key=" + ResIn;
+        }
+        else if (url.includes("&city=")) {
+            pre = url.split("&city=");
+            window.location.href = pre[0] + "&city=" + cityID + "&key="  + ResIn;
+        }
+        else {
+            window.location.href = url.split("food.html")[0]+ "food.html?&key=" + ResIn;
+        }
+    }
+}
+
+
+
+
+// get city https://developers.zomato.com/api/v2.1/cities?q=new&apikey=bb2b9736d46dfe9907e06393396a3b03
+// cuision ids https://developers.zomato.com/api/v2.1/cuisines?city_id=334&apikey=bb2b9736d46dfe9907e06393396a3b03
+// with cuision https://api.zomato.com/v2/search.json?city_id=334&cuisines=6&start=0&count=20&apikey=bb2b9736d46dfe9907e06393396a3b03
+
+
+
 
 
 

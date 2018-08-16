@@ -41,13 +41,15 @@
             
             <div id="cuisines" style="display:none; background: rgba(255,255,255,0.9); width:100%; max-height:80vh; box-sizing:border-box "> </div>
             <br>
-            <p id = 'city' style="margin-left:3%" ></p> <br> <input type="text" id ="cityIn" style="line-height: 1.5em; margin-left:2%">
-                <button onclick="GoCity()" style=" background:transparent; border-radius: 12px;">Goto City</button>
+                <input type="text" id ="cityIn" style="line-height: 1.5em; margin-left:2%" placeholder="City / Restaurant">
+                <button class = "btn2" onclick="findRes()">Find Restaurant</button> <br>
+                <p id = 'city' style="margin-left:2%;" ></p>
+                <button class = "btn2" onclick="GoCity()" >Goto City</button>
             
          </div>
          
          <br>
-         <div class="fixed-bg" style="margin-top:70px; ">
+         <div class="fixed-bg" style="margin-top:80px; ">
              <div class="transbox" id="moviesL">
  
                 <div class="bar">
