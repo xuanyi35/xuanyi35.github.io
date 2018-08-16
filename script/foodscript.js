@@ -343,7 +343,7 @@ function GenreAPI(cid){
     }*/
     else if (url.includes("&city=")) {
         pre = url.split("&city=");
-        window.location.href = pre[0] + "&city=" + cityID + "&cuisine=" + cid;
+        window.location.href = pre[0] + "&city=" + url.split("&city=")[1].split("&")[0] + "&cuisine=" + cid;
     }
     else {
         window.location.href = url.split("food.html")[0]+ "food.html?&cuisine=" + cid;
