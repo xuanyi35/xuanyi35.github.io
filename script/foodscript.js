@@ -275,6 +275,9 @@ function byCuisine() {
     }
     else {
         box.style.display = "block";
+	    
+     if (document.getElementByID("tb")==null){
+		
         var x = document.createElement("TABLE");
         x.setAttribute("id", "tb");
        // x.style.width = "80";
@@ -319,6 +322,7 @@ function byCuisine() {
         }
         
         request.send();
+     }
     }
     
 }
