@@ -4,10 +4,10 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" type="text/css" href="../css/iconBoard.css">
         <script src="../script/script.js" type="text/javascript"></script>
-        
     </head>
-    <body onload="mainDetail()">
+    <body>
         
         
         <div id="mySidenav" class="sidenav">
@@ -25,8 +25,13 @@
             <br>
             <div class="fixed-bg" style="margin-top:25px; ">
                 <div class="transbox">
-                    
-                    demo
+                    <div class = "board" id="board">
+                        <a href="?&Website"> <div class="icon" style="background-image:url('../img/website.jpg'); width:100%; "> <p style="top:15%;"> Website  Demo</p> </div> </a>
+                        <a href="?&Mobile"> <div class="icon" style="background-image:url('../img/mobile.jpg'); width:100%; margin-top:5vw;"> <p> Mobile Demo</p> </div> </a>
+                    </div>
+                    <div id ="demo" style="display:none" >
+                        demo
+                    </div>
                     
             </div>
         </div>
@@ -34,4 +39,5 @@
  
         
     </body>
+    <script src="../script/demoscript.js" type="text/javascript"></script>
 </html>
