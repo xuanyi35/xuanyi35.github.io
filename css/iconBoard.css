@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.board{
+	margin: 30px auto;
+	max-width: 50vw;
+}
+.icon{
+	width:23vw;
+	height:23vw;
+	margin-left:1%;
+ 	border-radius: 12px;
+    
+    background-size: cover;
+    float:left;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+.icon p{
+    font-size: 4vw;
+    text-align: center;
+    position:relative;
+    top:25%;
+    color:white;
+}
+
+.icon:hover{
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+
+@media screen and (max-width: 800px) {
+	.board{
+	 	margin: 10vw auto;
+		max-width: 80vw;
+	}
+    .icon {
+        width:38vw;
+        height:38vw;
+    }
+    .icon p{
+        font-size: 7vw;
+    }
+}
