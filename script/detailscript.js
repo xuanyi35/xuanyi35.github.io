@@ -51,23 +51,33 @@ function mainDetail() {
             Rname.innerHTML = rest.name;
             
             img = document.getElementById('pic');
-            img.src = rest.photos[0].photo.url;
-            
-            
+            try{
+                img.src = rest.photos[0].photo.url;
+            }
+            catch (err){
+                img.src = "../img/Noimg.jpg";
+            }
             cuisines = document.getElementById('cuisines');
             cuisines.innerHTML = "Cuisines: " + rest.cuisines;
             
             const box = document.getElementById('box2');
-            imgList = rest.photos;
-            imgList.forEach(i => {
-                var photoX = document.createElement("IMG");
-                photoX.src = i.photo.url;
-                photoX.addEventListener("click", function(){
-                    document.getElementById("pic").src = i.photo.url;
-                });
-                box.appendChild(photoX);
-            });
             
+            imgList = rest.photos;
+            if (imgList.length !=0){
+                imgList.forEach(i => {
+                    var photoX = document.createElement("IMG");
+                    photoX.src = i.photo.url;
+                    photoX.addEventListener("click", function(){
+                        document.getElementById("pic").src = i.photo.url;
+                    });
+                    box.appendChild(photoX);
+                });
+            }
+            else{
+                var photoX = document.createElement("IMG");
+                photoX.src  = "../img/Noimg.jpg";
+                box.appendChild(photoX);
+            }
             Rtime = document.getElementById('time');
             const timeList = rest.all_timings_customized.opening_hours;
             timeList.forEach(t => {

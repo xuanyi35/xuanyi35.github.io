@@ -51,7 +51,11 @@ function loadMain() {
                 const name = document.createElement('h4');
                 name.textContent = restaurant.restaurant.name;
                 const img = document.createElement("img");
-                img.src = restaurant.restaurant.photos[0].photo.url;
+                try {
+                    img.src = restaurant.restaurant.photos[0].photo.url;
+                }catch (err){
+                    img.src = "../img/Noimg.jpg";
+                }
                 img.alt = i.toString();
                 const info = document.createElement('p');
                 info.innerHTML = "cuisines: " + restaurant.restaurant.cuisines + '<br />'

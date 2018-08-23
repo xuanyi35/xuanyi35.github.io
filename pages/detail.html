@@ -5,53 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/detail.css">
+    <link rel="stylesheet" type="text/css" href="../css/loader.css">
     <script src="../script/script.js" type="text/javascript"></script>
     <script src="../script/detailscript.js" type="text/javascript"></script>
 
 </head>
 <body onload="mainDetail()">
 
-
-<div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav();">&times;</a>
-    <a href="../index.html">Home</a>
-    <a href="travel.html">Travel</a>
-    <a href="food.html">Food Discovery</a>
-    <a href="demo.html">Demo</a>
-    <a href="contact.html">Contact</a>
-</div>
-<div id="main">
-    <div style="position:fixed; width:100vw; background-image: url('../img/wallpaper.jpg');">
-        <span style="font-size:25px;cursor:pointer; margin-left:2%; " onclick="openNav();">&#9776; Xuanyi's Blog </span>
-    </div>
-    <br>
-    <div class="fixed-bg" style="margin-top:25px; ">
-        <div class="transbox">
-            
-            <h3 id='name' style="padding-left:3%; "> </h3>
-            <img id= 'pic' src="#" alt="Sorry We cannot find a Picture">
-             <div id="box1">
-                 <div id="box2">
-                </div>
-             </div>
-             <div id="information">
-                 <div id="inforIn">
-                    <p id ='cuisines' >  </p>
-                    <p  > Opening hours: </p>
-                    <p id = 'time'> </p>
-                    <h6 id='location' >  </h6>
-                    <div id="googleMap" > </div>
-
-                </div>
-            </div>
-            <!--p style="padding-left:3%;" ><button id="btn" onclick="MapFun()"> Show Map </button> </p-->
-
-      </div>
-    </div>
+<div id = "loaderid" >
+    <div class="loader">
+        <div class="loader2"></div></div>
+    <div class="shadow"></div>
 </div>
 
+<div id="other" style="display:none">
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav();">&times;</a>
+        <a href="../index.html">Home</a>
+        <a href="travel.html">Travel</a>
+        <a href="food.html">Food Discovery</a>
+        <a href="demo.html">Demo</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div id="main">
+        <div style="position:fixed; width:100vw; background-image: url('../img/wallpaper.jpg');">
+            <span style="font-size:25px;cursor:pointer; margin-left:2%; " onclick="openNav();">&#9776; Xuanyi's Blog </span>
+        </div>
+        <br>
+        <div class="fixed-bg" style="margin-top:25px; ">
+            <div class="transbox">
+                
+                <h3 id='name' style="padding-left:3%; "> </h3>
+                <div id="picOut">
+                    <img id= 'pic' src="#" alt="Sorry We cannot find a Picture">
+                </div>
+                 <div id="box1">
+                     <div id="box2">
+                    </div>
+                 </div>
+                 <div id="information">
+                     <div id="inforIn">
+                        <p id ='cuisines' >  </p>
+                        <p  > Opening hours: </p>
+                        <p id = 'time'> </p>
+                        <h6 id='location' >  </h6>
+                        <div id="googleMap" > </div>
+
+                    </div>
+                </div>
+                <!--p style="padding-left:3%;" ><button id="btn" onclick="MapFun()"> Show Map </button> </p-->
+
+          </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMdn1JdmOlEF4C0GyGUOY0MvUbEg-Jd7Q&callback=myMap"></script>
 
 </body>
+
+<script>
+    
+    setTimeout(showPage, 3000);
+    
+    function showPage() {
+        
+        document.getElementById("loaderid").style.display = "none";
+        document.getElementById("other").style.display = "block";
+    }
+
+    </script>
 </html>

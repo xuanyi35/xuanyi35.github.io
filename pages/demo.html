@@ -7,6 +7,28 @@
         <link rel="stylesheet" type="text/css" href="../css/iconBoard.css">
         <script src="../script/script.js" type="text/javascript"></script>
     </head>
+    <style>
+    #video {
+        width: 50vw;
+        height: 38vw;
+        margin-left: 10vw;
+    }
+    a, p ,h2,h5{
+        margin:1% 10vw;
+    }
+    
+    @media screen and (max-width: 800px) {
+        #video {
+            width: 80vw;
+            height: 68vw;
+            margin-left: 5vw;
+        }
+        a, p, h2,h5 {
+            margin-left: 5vw;
+        }
+        
+    }
+    </style>
     <body>
         
         
@@ -30,7 +52,17 @@
                         <a href="?&Mobile"> <div class="icon" style="background-image:url('../img/mobile.jpg'); width:100%; margin-top:5vw;"> <p> Mobile Demo</p> </div> </a>
                     </div>
                     <div id ="demo" style="display:none" >
-                        demo
+                        <h2 id ="Pname"> </h2>
+                        <h5 id ="subname"> </h5>
+                        <br>
+                        <p id = "desc"> </p>
+                        <br>
+                        <a id ="git"  href = "#" target="_blank" >Link to Git Hub  </a>
+                        <a id ="web"  href = "#" target="_blank" >Link to Website </a>
+                        <br>
+                        <br>
+                        <h5> Video </h5>
+                        <iframe id="video" src="#" frameborder="0" allowfullscreen></iframe>
                     </div>
                     
             </div>
