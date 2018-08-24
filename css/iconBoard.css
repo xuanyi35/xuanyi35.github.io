@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
 .board{
-	margin: 30px auto;
-	max-width: 50vw;
+	margin: 3% auto;
+	max-width: 41vw;
 }
 .icon{
-	width:23vw;
-	height:23vw;
+	width:20vw;
+	height:20vw;
 	margin-left:1%;
 	margin-top:1%;
  	border-radius: 12px;
@@ -29,24 +29,32 @@
     filter: alpha(opacity=100);
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
     .board{
         margin: 6vw auto;
         max-width: 50vw;
     }
+   .icon {
+        width:24vw;
+        height:24vw;
+    }
 }
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
     .board{
         margin: 10vw auto;
-        max-width: 50vw;
+        max-width: 60vw;
+    }
+    .icon {
+        width:29vw;
+        height:29vw;
     }
 }
 
 @media screen and (max-width: 800px) {
 	.board{
-	 	margin: 5vw auto;
+	 	margin: 18vw auto;
 		max-width: 80vw;
 	}
     .icon {
