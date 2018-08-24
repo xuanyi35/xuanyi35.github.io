@@ -20,6 +20,9 @@ else if (url.includes("Mobile")){
     
     ui = document.getElementById("ui");
     ui. src = "../img/Habit-station.png";
+    ui.onclick = function () {
+		window.open("../img/Habit-station.png");
+    } 
      
     var link = "https://www.youtube.com/embed/LeQVUgIUshQ";
     video = document.getElementById("video");
