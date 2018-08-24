@@ -18,6 +18,9 @@ else if (url.includes("Mobile")){
     description = document.getElementById("desc");
     description.innerHTML = ' CMPUT 301 course project. <br/> This App is used to track your Habits. Features: <br/><br/> 1. Add/Edit/Delete a Habit<br/> 2. Add/Edit/Delete a Event<br/> 3. Ckeck Schedule <BR/> 4. Add Friends<br/> 5. View Events Map <br/> 6. Wait for you to Explore More!';
     
+    ui = document.getElementById("ui");
+    ui. src = "../img/Habit-station.png";
+     
     var link = "https://www.youtube.com/embed/LeQVUgIUshQ";
     video = document.getElementById("video");
     video. src = link;
