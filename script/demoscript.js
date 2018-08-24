@@ -12,7 +12,7 @@ if  (url.includes("Website")){
     subname.innerText = "Solo ASP.NET CORE MVC Web Project";
     
     description = document.getElementById("desc");
-    description.innerHTML = ' Solo project for practice. <br/> HTML5, CSS, Javascript & c#, ASP.NET CORE 2.0, Entity Framework Core & MSSQL, LiINQ. <br/> This website is used to Explore Movies. Features: <br/><br/> 1. Show Latest Movies<br/> 2. Search Movie by Keyword/Genre <br/> 3. View Movie details <BR/> 4. Recommend Similar Movies<br/> 5. View Trailer <br/> 6. Add to your Favourite Movie List <br/>7. Login/Sign up to organize your favourtie movie list</br/>8. Wait for you to Explore More!';
+    description.innerHTML = ' Solo project for practice. <br/> HTML5, CSS, Javascript & c#, ASP.NET CORE 2.0, Entity Framework Core & MSSQL, LiINQ. <br/> This website is used to Explore Movies. <br/><br/>Features:  <br/> 1. Show Latest Movies<br/> 2. Search Movie by Keyword/Genre <br/> 3. View Movie details <BR/> 4. Recommend Similar Movies<br/> 5. View Trailer <br/> 6. Add to your Favourite Movie List <br/>7. Login/Sign up to organize your favourtie movie list</br/>8. Wait for you to Explore More!';
     
     ui = document.getElementById("ui");
     ui. src = "../img/Movie_UI.png";
@@ -41,7 +41,7 @@ else if (url.includes("Mobile")){
     subname.innerText = "University of Alberta - Android App Group Project";
     
     description = document.getElementById("desc");
-    description.innerHTML = ' CMPUT 301 course project. <br/> This App is used to track your Habits. Features: <br/><br/> 1. Add/Edit/Delete a Habit<br/> 2. Add/Edit/Delete a Event<br/> 3. Ckeck Schedule <BR/> 4. Add Friends<br/> 5. View Events Map <br/> 6. Wait for you to Explore More!';
+    description.innerHTML = ' CMPUT 301 course project. <br/> This App is used to track your Habits. <br/><br/> Features: <br/> 1. Add/Edit/Delete a Habit<br/> 2. Add/Edit/Delete a Event<br/> 3. Ckeck Schedule <BR/> 4. Add Friends<br/> 5. View Events Map <br/> 6. Wait for you to Explore More!';
     
     ui = document.getElementById("ui");
     ui. src = "../img/Habit-station.png";
