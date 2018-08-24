@@ -2,6 +2,13 @@ body{
     font-family:Verdana;
 }
 
+/* scroll bar */
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+
 /*  side bar  */
 .sidenav {
     height: 100%;
