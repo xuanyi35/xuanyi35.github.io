@@ -12,7 +12,7 @@ if  (url.includes("Website")){
     subname.innerText = "Solo ASP.NET CORE MVC Web Project";
     
     description = document.getElementById("desc");
-    description.innerHTML = ' Solo project for practice. <br/> HTML5, CSS, Javascript & c#, ASP.NET CORE 2.0, Entity Framework Core & MSSQL, LiINQ. <br/> This website is used to Explore Movies. <br/><br/>Features: <br/><br/> 1. Show Latest Movies<br/> 2. Search Movie by Keyword/Genre <br/> 3. View Movie details <BR/> 4. Recommend Similar Movies<br/> 5. View Trailer <br/> 6. Add to your Favourite Movie List <br/>7. Login/Sign up to organize your favourtie movie list</br/>8. Wait for you to Explore More!';
+    description.innerHTML = ' Solo project for practice. <br/> HTML5, CSS, Javascript & c#, ASP.NET CORE 2.0, Entity Framework Core & MSSQL, LINQ. <br/> This website is used to Explore Movies. <br/><br/>Features: <br/><br/> 1. Show Latest Movies<br/> 2. Search Movie by Keyword/Genre <br/> 3. View Movie details <BR/> 4. Recommend Similar Movies<br/> 5. View Trailer <br/> 6. Add to your Favourite Movie List <br/>7. Login/Sign up to organize your favourtie movie list</br/>8. Wait for you to Explore More!';
     
     ui = document.getElementById("ui");
     ui. src = "../img/Movie_UI.png";
