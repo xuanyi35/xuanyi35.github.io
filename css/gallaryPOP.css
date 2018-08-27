@@ -43,8 +43,8 @@ div.gallery p{
 
 @media only screen and (max-width: 650px) {
     .responsive {
-        width: 90%;
-	margin-left: 4%; 
+        width: 98%;
+	margin-left: 3%; 
     }
 }
 
