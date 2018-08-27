@@ -30,7 +30,7 @@ var myNotes = {
 		show_pic("",5);
 	}
 	else if (url.includes("&go=VanTrip")){
-		show_pic("",5);
+		show_pic("../img/pictures/van-",5);
 	}
 	else if (url.includes("&go=Banff")){
 		show_pic("../img/pictures/banff-",5);
