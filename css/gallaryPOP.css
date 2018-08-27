@@ -43,8 +43,8 @@ div.gallery p{
 
 @media only screen and (max-width: 650px) {
     .responsive {
-        width: 80%;
-	margin-left: 10%; 
+        width: 90%;
+	margin-left: 4%; 
     }
 }
 
@@ -63,7 +63,6 @@ div.gallery p{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 2%; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
