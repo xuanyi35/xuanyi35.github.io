@@ -9,6 +9,7 @@ var myNotes = {"../img/Noimg.jpg": "kkk" ,
 
     function load_gallary(){
 	url = window.location.href;
+	document.getElementById("icons").style.display = "none";
    	if (url.includes("&go=Drumheller")){
 		show_pic("",5);
 
@@ -29,7 +30,7 @@ var myNotes = {"../img/Noimg.jpg": "kkk" ,
 		show_pic("",5);
 	}
 	else{
-		//
+	  	document.getElementById("icons").style.display = "block";
 	}
     }
 
