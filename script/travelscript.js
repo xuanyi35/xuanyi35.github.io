@@ -1,8 +1,8 @@
 var myNotes = {"../img/Noimg.jpg": "kkk" , 
 	       "../img/pictures/banff-0.jpg": "Banff - Lake Louise in November, shocked by the beauty of it" , 
-	       "../img/pictures/banff-1.jpg": "Ice Fields  - lies between Banff National Park and Jasper National Park" ,
-	       "../img/pictures/banff-2.jpg": "Fairmont Banff Springs - Luxury hotal in Banff, this is the view outside the window", 
-	       "../img/pictures/banff-3.jpg": "Interesting shops in Banff Town",
+	       "../img/pictures/banff-3.jpg": "Ice Fields  - lies between Banff National Park and Jasper National Park" ,
+	       "../img/pictures/banff-1.jpg": "Fairmont Banff Springs - Luxury hotal in Banff, this is the view outside the window", 
+	       "../img/pictures/banff-2.jpg": "Interesting shops in Banff Town",
 	       "../img/pictures/banff-4.jpg": "Decoration in Cross Iron Mall"
 	      };
 
@@ -65,7 +65,7 @@ var myNotes = {"../img/Noimg.jpg": "kkk" ,
 		var image = document.createElement("IMG");	
 		image.src = path;
 		var note = document.createElement("p");	
-		note.innerHTML= noteText.substring(0, 50);
+		note.innerHTML= noteText.substring(0, 50)+"...";
 		gallary.appendChild(image);
 		gallary.appendChild(note);
 		gallary.onclick = function () {
