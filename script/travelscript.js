@@ -1,9 +1,15 @@
-var myNotes = {"../img/Noimg.jpg": "kkk" , 
-	       "../img/pictures/banff-0.jpg": "Banff - Lake Louise in November, shocked by the beauty of it" , 
+var myNotes = {
+	       "../img/pictures/banff-0.jpg": "Banff - Lake Louise in November, shocked by its beauty " , 
 	       "../img/pictures/banff-3.jpg": "Ice Fields  - lies between Banff National Park and Jasper National Park" ,
 	       "../img/pictures/banff-1.jpg": "Fairmont Banff Springs - Luxury hotal in Banff, this is the view outside the window", 
 	       "../img/pictures/banff-2.jpg": "Interesting shops in Banff Town",
-	       "../img/pictures/banff-4.jpg": "Decoration in Cross Iron Mall"
+	       "../img/pictures/banff-4.jpg": "Decoration in Cross Iron Mall",
+	       "../img/pictures/van-0.jpg": "Jump Jump Jump @ Dinosaur Provincial Park" , 
+	       "../img/pictures/van-1.jpg": "View of Dinosaur Provincial Park " ,
+	       "../img/pictures/van-2.jpg": "Emerald Lake - Go Boating!", 
+	       "../img/pictures/van-3.jpg": "Waterton Park - beginning of May advanture",
+	       "../img/pictures/van-4.jpg": "See the beautiful in Waterton Park "
+
 	      };
 
 
