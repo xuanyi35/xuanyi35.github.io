@@ -1,9 +1,9 @@
 var myNotes = {"../img/Noimg.jpg": "kkk" , 
-	       "0.jpg": "first" , 
-	       "1.jpg": "second" ,
-	       "2.jpg":"third", 
-	       "4.jpg":"4th, nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu", 
-	       "3.jpg":"nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn" 
+	       "../img/pictures/banff-0.jpg": "Banff - Lake Louise in November, shocked by the beauty of it" , 
+	       "../img/pictures/banff-1.jpg": "Ice Fields  - lies between Banff National Park and Jasper National Park" ,
+	       "../img/pictures/banff-2.jpg": "Fairmont Banff Springs - Luxury hotal in Banff, this is the view outside the window", 
+	       "../img/pictures/banff-3.jpg": "Interesting shops in Banff Town",
+	       "../img/pictures/banff-4.jpg": "Decoration in Cross Iron Mall"
 	      };
 
 
@@ -27,7 +27,7 @@ var myNotes = {"../img/Noimg.jpg": "kkk" ,
 		show_pic("",5);
 	}
 	else if (url.includes("&go=Banff")){
-		show_pic("",5);
+		show_pic("../img/pictures/banff-",5);
 	}
 	else{
 	  	document.getElementById("icons").style.display = "block";
@@ -48,8 +48,8 @@ var myNotes = {"../img/Noimg.jpg": "kkk" ,
 		if (i >= len){
 		  break;
 		}
-		/*var path = pre+ i.toString() + ".jpg";*/
-		var path = "../img/Noimg.jpg";
+		var path = pre+ i.toString() + ".jpg";
+		/*var path = "../img/Noimg.jpg";*/
 		var note = myNotes[path];
 		add_pic(res,path,note)
 	    }
@@ -65,7 +65,7 @@ var myNotes = {"../img/Noimg.jpg": "kkk" ,
 		var image = document.createElement("IMG");	
 		image.src = path;
 		var note = document.createElement("p");	
-		note.innerHTML= noteText.substring(0, 100);
+		note.innerHTML= noteText.substring(0, 50);
 		gallary.appendChild(image);
 		gallary.appendChild(note);
 		gallary.onclick = function () {
