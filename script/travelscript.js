@@ -25,12 +25,18 @@ var myNotes = {
 		 "../img/pictures/mexico-8.jpg": "Xcaret - Ocean anmials",
 		 "../img/pictures/mexico-9.jpg": "Xcaret - Land anmials",
 		 "../img/pictures/mexico-10.jpg": "Xcaret - Exhibitions info Board",
-	"../img/pictures/dru-0.jpg": "Drumheller - Huge Dinasour @Drumheller visit center",
-	"../img/pictures/dru-1.jpg": "Royal Tyrrell Museum - Probabbly Tyrannosaurus? Huge guy LOL",
-	"../img/pictures/dru-2.jpg": "Hoodoos Trail - Special Landscape at South Drumheller ",
-	"../img/pictures/dru-3.jpg": "Royal Tyrrell Museum - another scaring dinasour",
-	"../img/pictures/dru-4.jpg": "@Drumheller visit center - go upstairs to the mouth of the Huge dinasour "
-	
+		"../img/pictures/dru-0.jpg": "Drumheller - Huge Dinasour @Drumheller visit center",
+		"../img/pictures/dru-1.jpg": "Royal Tyrrell Museum - Probabbly Tyrannosaurus? Huge guy LOL",
+		"../img/pictures/dru-2.jpg": "Hoodoos Trail - Special Landscape at South Drumheller ",
+		"../img/pictures/dru-3.jpg": "Royal Tyrrell Museum - another scaring dinasour",
+		"../img/pictures/dru-4.jpg": "@Drumheller visit center - go upstairs to the mouth of the Huge dinasour ",
+	"../img/pictures/calZoo-0.jpg": "Calgary Zoo - Lazy Panda",
+	"../img/pictures/calZoo-1.jpg": "Calgary Zoo - Bamboo Man ? ",
+	"../img/pictures/calZoo-2.jpg": "Calgary Zoo - Loney Bear",
+	"../img/pictures/calZoo-3.jpg": "Calgary Zoo  - Sleepy Flamingo",
+	"../img/pictures/calZoo-4.jpg": "Calgary Zoo  - stretching Wolf ",
+	"../img/pictures/calZoo-5.jpg": "Calgary Zoo  - Lordly Peacock"
+
 	      };
 
 
@@ -42,7 +48,7 @@ var myNotes = {
 
 	}
      	else if (url.includes("&go=CalgaryZoo")){
-		show_pic("",5);
+		show_pic("../img/pictures/calZoo-",6);
 	}
 	else if (url.includes("&go=Mexico")){
 		show_pic("../img/pictures/mexico-",11);
