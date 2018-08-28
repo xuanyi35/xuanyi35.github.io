@@ -24,7 +24,12 @@ var myNotes = {
 		 "../img/pictures/mexico-7.jpg": "Xcaret - night show, know about the history of Mayan", 
 		 "../img/pictures/mexico-8.jpg": "Xcaret - Ocean anmials",
 		 "../img/pictures/mexico-9.jpg": "Xcaret - Land anmials",
-		 "../img/pictures/mexico-10.jpg": "Xcaret - Exhibitions info Board"
+		 "../img/pictures/mexico-10.jpg": "Xcaret - Exhibitions info Board",
+	"../img/pictures/dru-0.jpg": "Drumheller - Huge Dinasour @Drumheller visit center",
+	"../img/pictures/dru-1.jpg": "Royal Tyrrell Museum - Probabbly Tyrannosaurus? Huge guy LOL",
+	"../img/pictures/dru-2.jpg": "Hoodoos Trail - Special Landscape at South Drumheller ",
+	"../img/pictures/dru-3.jpg": "Royal Tyrrell Museum - another scaring dinasour",
+	"../img/pictures/dru-4.jpg": "@Drumheller visit center - go upstairs to the mouth of the Huge dinasour "
 	
 	      };
 
