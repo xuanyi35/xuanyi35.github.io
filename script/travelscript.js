@@ -10,11 +10,22 @@ var myNotes = {
 	       "../img/pictures/van-3.jpg": "Waterton Park - May advanture, go hiking !",
 	       "../img/pictures/van-4.jpg": "See the beautiful water in Waterton Park ",
 	       "../img/pictures/yellow-0.jpg":  "Aurora @Yellowknife",
-	       "../img/pictures/yellow-1.jpg":  "Yellowknife Old Town Glassworks - You can design your own patterns on different kinds of glasses / Bottles / Mugs.",
+	       "../img/pictures/yellow-1.jpg":  "Yellowknife Old Town Glassworks - You can design your own glasses / Bottles / Mugs.",
 	       "../img/pictures/yellow-2.jpg":  "Welcome Tags @Yellowknife visit center",
 	       "../img/pictures/yellow-3.jpg":  "Try Dog Sled for the first time!",
-	       "../img/pictures/yellow-4.jpg":  "Walk on Ice Roads - so cool"
-
+	       "../img/pictures/yellow-4.jpg":  "Walk on Ice Roads - so cool !",
+		 "../img/pictures/mexico-0.jpg": "Cancun - Chichen Itza, built by the Maya people of the Terminal Classic period.",
+		 "../img/pictures/mexico-1.jpg": "Ik Kil cenote - There is a long line to experience jumpping into the lake",
+		 "../img/pictures/mexico-2.jpg": "Beach near the Resort ",
+		 "../img/pictures/mexico-3.jpg": "Cancun - Coco Bongo, Located in the heart of the Hotel Zone "
+		 "../img/pictures/mexico-4.jpg": "Xplore - Drive amphibious vehicles in the Mayan jungle",
+		 "../img/pictures/mexico-5.jpg": "Xplore - Ziplines, fly across jungle at high speed ",
+		 "../img/pictures/mexico-6.jpg": "Stayin in Hotel, Lying on the beach and enjoy different drinks " ,
+		 "../img/pictures/mexico-7.jpg": "Xcaret - night show, know about the history of Mayan", 
+		 "../img/pictures/mexico-8.jpg": "Xcaret - Ocean anmials",
+		 "../img/pictures/mexico-9.jpg": "Xcaret - Land anmials"
+		 "../img/pictures/mexico-10.jpg": "Xcaret - Exhibitions info Board"
+	
 	      };
 
 
@@ -29,7 +40,7 @@ var myNotes = {
 		show_pic("",5);
 	}
 	else if (url.includes("&go=Mexico")){
-		show_pic("",5);
+		show_pic("../img/pictures/mexico-",11);
 	}
 	else if (url.includes("&go=Yellowknife")){
 		show_pic("../img/pictures/yellow-",5);
