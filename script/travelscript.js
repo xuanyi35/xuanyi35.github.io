@@ -7,8 +7,13 @@ var myNotes = {
 	       "../img/pictures/van-0.jpg": "Jump Jump Jump @ Dinosaur Provincial Park" , 
 	       "../img/pictures/van-1.jpg": "View of Dinosaur Provincial Park " ,
 	       "../img/pictures/van-2.jpg": "Emerald Lake - Go Boating!", 
-	       "../img/pictures/van-3.jpg": "Waterton Park - beginning of May advanture",
-	       "../img/pictures/van-4.jpg": "See the beautiful in Waterton Park "
+	       "../img/pictures/van-3.jpg": "Waterton Park - May advanture, go hiking !",
+	       "../img/pictures/van-4.jpg": "See the beautiful water in Waterton Park ",
+	       "../img/pictures/yellow-0.jpg":  "Aurora @Yellowknife",
+	       "../img/pictures/yellow-1.jpg":  "Yellowknife Old Town Glassworks - You can design your own patterns on different kinds of glasses / Bottles / Mugs.",
+	       "../img/pictures/yellow-2.jpg":  "Welcome Tags @Yellowknife visit center",
+	       "../img/pictures/yellow-3.jpg":  "Try Dog Sled for the first time!",
+	       "../img/pictures/yellow-4.jpg":  "Walk on Ice Roads - so cool"
 
 	      };
 
@@ -27,7 +32,7 @@ var myNotes = {
 		show_pic("",5);
 	}
 	else if (url.includes("&go=Yellowknife")){
-		show_pic("",5);
+		show_pic("../img/pictures/yellow-",5);
 	}
 	else if (url.includes("&go=VanTrip")){
 		show_pic("../img/pictures/van-",5);
