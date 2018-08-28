@@ -32,6 +32,7 @@ if  (url.includes("Website")){
 	
 }
 else if (url.includes("Mobile")){
+    window.scrollTo(0,0);
     board.style.display = "none";
     demo.style.display = "block";
     
