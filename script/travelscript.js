@@ -32,7 +32,7 @@ var myNotes = {
 		"../img/pictures/dru-4.jpg": "@Drumheller visit center - go upstairs to the mouth of the Huge dinasour ",
 	"../img/pictures/calZoo-0.jpg": "Calgary Zoo - Lazy Panda",
 	"../img/pictures/calZoo-1.jpg": "Calgary Zoo - Bamboo Man ? ",
-	"../img/pictures/calZoo-2.jpg": "Calgary Zoo - Loney Bear",
+	"../img/pictures/calZoo-2.jpg": "Calgary Zoo - Lonely Bear",
 	"../img/pictures/calZoo-3.jpg": "Calgary Zoo  - Sleepy Flamingo",
 	"../img/pictures/calZoo-4.jpg": "Calgary Zoo  - stretching Wolf ",
 	"../img/pictures/calZoo-5.jpg": "Calgary Zoo  - Lordly Peacock"
