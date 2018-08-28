@@ -38,7 +38,7 @@ var myNotes = {
 	url = window.location.href;
 	document.getElementById("icons").style.display = "none";
    	if (url.includes("&go=Drumheller")){
-		show_pic("",5);
+		show_pic("../img/pictures/dru-",5);
 
 	}
      	else if (url.includes("&go=CalgaryZoo")){
