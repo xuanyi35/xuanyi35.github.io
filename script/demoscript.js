@@ -28,7 +28,7 @@ if  (url.includes("Website")){
 	
     github = document.getElementById("git");
     github.href = "https://github.com/xuanyi35/MvcMovie1" ;
-    document.getElementById("web").href = "https://xuanyi-movie.gear.host/"; 	
+    document.getElementById("web").href = "https://xuanyi-movie.herokuapp.com/"; 	
 	
 }
 else if (url.includes("Mobile")){
